@@ -1,0 +1,28 @@
+@model List<Product>
+
+<h2>Order Details</h2>
+<form asp-action="Order" method="post">
+    @if (ViewBag.ShowQuantityField != null && ViewBag.ShowQuantityField is bool && (bool)ViewBag.ShowQuantityField)
+    {
+        <label>Enter quantity:</label>
+        <input type="number" name="Quantity" required />
+    }
+
+    @if (Model != null)
+    {
+        for (int i = 0; i < Model.Count; i++)
+        {
+            <label>@Model[i].Name:</label>
+            <input type="text" name="Products[@i].Name" value="@Model[i].Name" hidden />
+
+            <label>Quantity:</label>
+            <input type="number" name="Products[@i].Quantity" required />
+        }
+    }
+    else
+    {
+        <p>No products available.</p>
+    }
+
+    <button type="submit">Confirm</button>
+</form>

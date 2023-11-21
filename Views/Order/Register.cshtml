@@ -1,0 +1,12 @@
+@model User
+
+<h2>Registration</h2>
+<form asp-action="Register" method="post">
+    <label>Name:</label>
+    <input asp-for="Name" required />
+
+    <label>Age:</label>
+    <input asp-for="Age" type="number" required />
+
+    <button type="submit">Submit</button>
+</form>
